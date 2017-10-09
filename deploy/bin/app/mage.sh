@@ -26,13 +26,12 @@ if [ -f "${FILE_CFG}" ]; then
     if [ "${IS_CHAINED}" = "no" ]; then    # this is standalone launch, load deployment configuration;
         echo "There is deployment configuration in ${FILE_CFG}."
         . ${FILE_CFG}
+    # else: deployment configuration should be loaded before
     fi
 else
-    if [ "${IS_CHAINED}" = "no" ]; then    # this is standalone launch w/o deployment configuration - exit;
-        echo "There is no expected configuration in ${FILE_CFG}. Aborting..."
-        cd ${DIR_CUR}
-        exit 255
-    fi
+    echo "There is no expected configuration in ${FILE_CFG}. Aborting..."
+    cd ${DIR_CUR}
+    exit 255
 fi
 
 
@@ -53,15 +52,9 @@ MODE_WORK="work"
 ## =========================================================================
 
 # (re)create root folder for application deployment
-if [ -d "${DIR_MAGE}" ]; then
-    if [ "${MODE}" = "${MODE_WORK}" ]; then
-        echo "Re-create '${DIR_MAGE}' folder."
-        rm -fr ${DIR_MAGE}    # remove Magento root folder
-        mkdir -p ${DIR_MAGE}  # ... then create it
-    fi
-else
-    mkdir -p ${DIR_MAGE}      # just create folder if not exist
-fi
+echo "Re-create '${DIR_MAGE}' folder."
+rm -fr ${DIR_MAGE}    # remove Magento root folder
+mkdir -p ${DIR_MAGE}  # ... then create it
 echo "Magento will be installed into the '${DIR_MAGE}' folder."
 
 

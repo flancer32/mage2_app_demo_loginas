@@ -16,7 +16,7 @@ DIR_ROOT=${DIR_ROOT:=`cd "$( dirname "$0" )/../../../../" && pwd`}
 MODE=${MODE}
 IS_CHAINED="yes"       # 'yes' - this script is launched in chain with other scripts, 'no'- standalone launch;
 if [ -z "${MODE}" ]; then
-    MODE="work"
+    MODE="live"
     IS_CHAINED="no"
 fi
 

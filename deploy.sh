@@ -69,7 +69,7 @@ if [ "${OPT_CLI_HELP}" = "yes" ]; then
     echo "  -d: Web application deployment mode ([work|live], default: work);"
     echo "  -h: This output;"
     echo "  -m: Magento 2 itself deployment mode ([developer|production], default: developer);"
-    echo "  -E: Existing DB will be used in 'work' mode);"
+    echo "  -E: Existing DB will be used;"
     echo "  -S: Skip database initialization (Web UI should be used to init DB);"
     exit
 fi
